@@ -1,0 +1,106 @@
+;チュートリアル用スクリプトファイル
+
+;メッセージ表示
+[showmessage]
+
+;共通ライブラリ
+;セーブ・ロードバックログなど基本的な機能を取り込む 
+[call file=wide/system target="*system_setting_buttons"]
+
+;ゲーム作成で便利なマクロ集
+[call file=wide/libs/utils]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+;背景の新規定義
+[bg_new storage="room"]
+
+;音楽を再生します[l][r]
+[playbgm storage=test]
+;音楽が再生されましたね[l][r]
+;次に音楽を停止します[l][r]
+;[stopbgm time = 5]
+;音楽の再生が止まりました[l][r]
+
+[chara_new name=rain storage= scale="2" y=-1 jname=レイン jcolor="#669390"]
+
+;背景の表示
+[bg_show ]
+
+[wait time=2]
+
+#rain
+ぼくは普通の高校生！[p]
+今日からワクワク☆ドキドキの新学期なんだ！[r]
+
+
+;[jump target="debug"]
+
+
+
+;背景移動のスクリプト
+ガタガタ[p]
+廊下で物音がする。[p]
+外か！[p]
+
+[bg_mod storage="rouka" time = 0.5]
+
+#rain
+・・・！[p]
+だれだ貴様は・・・？[p]
+[select_new text="問いただす" target=*select_a1 ]
+[select_new text="蹴る" target=*select_a2 ]
+[select_new text="逃げる" target=*select_a3 ]
+
+[select_show sound=click ]
+
+[s]
+
+*select_a1
+おい、貴様名乗る権利をやろう！[p]
+@jump target=*a_common
+
+*select_a2
+げし！[p]
+おらあ！[p]
+
+@jump target=*a_common
+
+*a_common 
+ふん、まあこれくらいで勘弁してやろう・・・！[p]
+
+[bg_mod storage="room" time = 2]
+
+;キャラクターの宣言 
+[chara_new name=yuko storage=yuko1 scale="2" y=-1 jname=ゆうこ jcolor="#249390"]
+[chara_face name=yuko face="nico" storage="yuko2"]
+
+;キャラクターを表示
+[show name=yuko]
+
+#俺
+ゆうこさんおはよう。[p]
+
+[chara_mod name="yuko" face="nico"]
+#yuko
+あら、はやいのね？。おはよう。[p]
+
+#俺
+今日はいい天気だね。[p]
+
+[chara_mod name="yuko" face="default"]
+#yuko
+そうね。でも天気予報では昼から雨らしいわよ[p]
+
+[chara_new name=haruko storage=haruko1 scale="2" x=6 y=-1 jname=はるこ jcolor="#999390"]
+[chara_face name=haruko face="nico" storage="haruko2"]
+
+;はるこ登場
+[show name=haruko]
+
+#haruko
+こんにちわふたりとも！[p]
+
+;*debug
+;ジャンプ先[p]
+

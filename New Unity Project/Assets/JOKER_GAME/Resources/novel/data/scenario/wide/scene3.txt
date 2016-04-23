@@ -1,0 +1,3 @@
+*select_a2 
+「選択肢２」がクリックされました[p]
+@jump file=wide/scene1 target=*a_common
